@@ -39,4 +39,8 @@ jobs:
           ls -la
           whoami
           date
-
+          sudo apt update
+          sudo snap install terraform --classic
+          terraform --version
+          sudo snap install aws-cli --classic
+          aws --version
