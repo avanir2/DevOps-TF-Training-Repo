@@ -59,8 +59,8 @@ jobs:
           terraform init
           terraform fmt
           terraform validate
-          terraform plan -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key="$AWS_SK_VALUE"
-          terraform apply -auto-approve -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key="$AWS_SK_VALUE"
+          terraform plan -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key=$AWS_SK_VALUE"
+          terraform apply -auto-approve -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key=$AWS_SK_VALUE"
           terraform show
-          terraform destroy -auto-approve -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key="$AWS_SK_VALUE"
-
+          terraform destroy -auto-approve -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key=$AWS_SK_VALUE"
+          terraform show
