@@ -56,4 +56,8 @@ jobs:
           terraform init
           terraform fmt
           terraform validate
-          
+          terraform plan $AWS_AK_VALUE $AWS_SK_VALUE
+          terraform apply -auto-approve $AWS_AK_VALUE $AWS_SK_VALUE
+          terraform show
+          terraform destroy -auto-approve $AWS_AK_VALUE $AWS_SK_VALUE
+
