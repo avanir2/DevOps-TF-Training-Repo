@@ -51,13 +51,16 @@ jobs:
           aws configure set region $AWS_REG_VALUE
           aws s3 ls
       - name: Execute Terraform commands
+        env:
+          AWS_AK_VALUE: ${{ secrets.VP_AWS_AK }}
+          AWS_SK_VALUE: ${{ secrets.VP_AWS_SK }}
         run: |
           cd env/test/
           terraform init
           terraform fmt
           terraform validate
-          terraform plan $AWS_AK_VALUE $AWS_SK_VALUE
-          terraform apply -auto-approve $AWS_AK_VALUE $AWS_SK_VALUE
+          terraform plan -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key="$AWS_SK_VALUE"
+          terraform apply -auto-approve -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key="$AWS_SK_VALUE"
           terraform show
-          terraform destroy -auto-approve $AWS_AK_VALUE $AWS_SK_VALUE
+          terraform destroy -auto-approve -var="aws_access_key=$AWS_AK_VALUE" -var="aws_secret_key="$AWS_SK_VALUE"
 
